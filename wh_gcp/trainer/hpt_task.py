@@ -14,7 +14,6 @@ flags.DEFINE_integer("layer_num", 3, "Layer number")
 
 FLAGS = flags.FLAGS
 
-
 def main(_):
   console.start('trainer.task')
 

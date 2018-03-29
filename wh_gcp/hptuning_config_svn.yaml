@@ -14,17 +14,17 @@ trainingInput:
       maxValue: 0.01
       scaleType: UNIT_LOG_SCALE
     - parameterName: order1
-      type: INTEGAR
+      type: INTEGER
       minValue: 1
       maxValue: 3
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: order2
-      type: INTEGAR
+      type: INTEGER
       minValue: 1
       maxValue: 3
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: order3
-      type: INTEGAR
+      type: INTEGER
       minValue: 1
       maxValue: 3
       scaleType: UNIT_LINEAR_SCALE
