@@ -1,0 +1,30 @@
+trainingInput:
+  pythonVersion: "3.5"
+  scaleTier: BASIC
+  hyperparameters:
+    goal: MINIMIZE
+    maxTrials: 50
+    maxParallelTrials: 5
+    hyperparameterMetricTag: best_metric_sum
+    enableTrialEarlyStopping: TRUE
+    params:
+    - parameterName: lr
+      type: DOUBLE
+      minValue: 0.00001
+      maxValue: 0.01
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: order1
+      type: INTEGAR
+      minValue: 1
+      maxValue: 3
+      scaleType: UNIT_LINEAR_SCALE
+    - parameterName: order2
+      type: INTEGAR
+      minValue: 1
+      maxValue: 3
+      scaleType: UNIT_LINEAR_SCALE
+    - parameterName: order3
+      type: INTEGAR
+      minValue: 1
+      maxValue: 3
+      scaleType: UNIT_LINEAR_SCALE
