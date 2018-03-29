@@ -39,6 +39,7 @@ def mlp_00(mark, memory_depth, layer_dim, layer_num, learning_rate,
   return model
 
 def svn_00(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate=0.001):
+
   strength = 0
   # Initiate a predictor
   model = NeuralNet(memory_depth, mark=mark)

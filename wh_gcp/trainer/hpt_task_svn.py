@@ -44,9 +44,8 @@ def main(_):
 
 
   # Get model
-  model = model_lib.svn00(
+  model = model_lib.svn_00(
     MEMORY_DEPTH, MARK, LAYER_DIM, ORDER1, ORDER2, ORDER3, LEARNING_RATE)
-
   # Load data set
   train_set, val_set, test_set = load_wiener_hammerstein(
     WH_PATH, depth=MEMORY_DEPTH)
