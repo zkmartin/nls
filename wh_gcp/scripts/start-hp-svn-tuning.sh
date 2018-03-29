@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default configuration
-MODEL_MARK=zk-svn
+MODEL_MARK=zk_svn
 JOB_NAME=$MODEL_MARK
 BUCKET_NAME=nls-nn-bucket
 GS_ROOT=gs://$BUCKET_NAME
