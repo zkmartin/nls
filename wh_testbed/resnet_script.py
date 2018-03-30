@@ -12,20 +12,20 @@ VAL_SIZE = 20000
 
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
-NN_EPOCH = 500
-NN_BLOCKS = 10
-NN_LEARNING_RATE = 0.001
+NN_EPOCH = 10
+NN_BLOCKS = 20
+NN_LEARNING_RATE = 0.00003
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
 
-FLAGS.train = True
+FLAGS.train = False
 # FLAGS.train = False
 # FLAGS.overwrite = True
 FLAGS.overwrite = False
 # FLAGS.save_best = False
 FLAGS.save_best = True
 
-FLAGS.smart_train = True
+FLAGS.smart_train = False
 FLAGS.epoch_tol = 20
 
 # Turn off overwrite while in save best mode

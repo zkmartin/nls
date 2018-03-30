@@ -88,7 +88,7 @@ class NeuralNet(Model):
     console.supplement('STD[err] = {:.4f} ({:.3f}%)'.format(val, ratio(val)))
     # The root mean square value of the error in time domain
     val = err.rms
-    console.supplement('RMS[err] = {:.4f} ({:.3f}%)'.format(val, ratio(val)))
+    console.supplement('RMS[err] = {:.6f} ({:.3f}%)'.format(val, ratio(val)))
 
     # Plot
     if not plot: return

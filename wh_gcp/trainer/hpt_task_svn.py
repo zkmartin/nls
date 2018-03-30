@@ -35,7 +35,6 @@ def main(_):
   EPOCH = 100
 
   LAYER_DIM = MEMORY_DEPTH * 2
-  LAYER_NUM = FLAGS.layer_num
   LEARNING_RATE = FLAGS.lr
   BATCH_SIZE = 64
   ORDER1 = FLAGS.order1
