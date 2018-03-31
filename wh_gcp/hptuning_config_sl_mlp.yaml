@@ -30,3 +30,4 @@ trainingInput:
       - sigmoid
       - tanh
       - leakyrelu
+

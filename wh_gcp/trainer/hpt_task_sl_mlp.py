@@ -35,7 +35,6 @@ def main(_):
 
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
   LEARNING_RATE = FLAGS.lr
-  BATCH_SIZE = FLAGS.batch_size
   ACTIVATION = FLAGS.activation
 
 
@@ -52,7 +51,7 @@ def main(_):
 
   # Train
   if FLAGS.train:
-    model.identify(train_set, val_set, batch_size=BATCH_SIZE,
+    model.identify(train_set, val_set, batch_size=64,
                    print_cycle=PRINT_CYCLE, epoch=EPOCH)
 
   console.end()
