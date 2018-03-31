@@ -16,13 +16,13 @@ trainingInput:
     - parameterName: coe
       type: DISCRETE
       discreteValues:
-      -2
-      -8
-      -16
-      -32
-      -60
-      -80
-      -100
+      - 2
+      - 8
+      - 16
+      - 32
+      - 60
+      - 80
+      - 100
     - parameterName: activation
       type: CATEGORICAL
       categoricalValues:
