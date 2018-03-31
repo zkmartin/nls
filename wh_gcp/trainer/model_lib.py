@@ -38,6 +38,28 @@ def mlp_00(mark, memory_depth, layer_dim, layer_num, learning_rate,
   # Return model
   return model
 
+def mlp_01(mark, memory_depth, layer_dim, learning_rate,
+           activation='relu'):
+  # Configurations
+  pass
+
+  # Initiate a predictor
+  model = NeuralNet(memory_depth, mark=mark)
+  nn = model.nn
+  assert isinstance(nn, Predictor)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+  nn.add(Linear(output_dim=layer_dim))
+  nn.add(Activation(activation))
+  nn.add(Linear(output_dim=1))
+
+  # Build model
+  model.default_build(learning_rate)
+
+  # Return model
+  return model
+
 def svn_00(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate=0.001):
 
   strength = 0

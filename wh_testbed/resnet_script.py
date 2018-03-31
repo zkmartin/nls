@@ -51,4 +51,5 @@ if FLAGS.train: model.identify(
 # Evaluation
 if EVALUATION:
   model.evaluate(train_set, start_at=1000, plot=False)
-  model.evaluate(test_set, start_at=1000, plot=PLOT)
+  model.evaluate(val_set, start_at=80, plot=False)
+  model.evaluate(test_set, start_at=1000, plot=False)
