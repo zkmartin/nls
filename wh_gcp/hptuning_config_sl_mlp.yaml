@@ -11,7 +11,7 @@ trainingInput:
     - parameterName: lr
       type: DOUBLE
       minValue: 0.00001
-      maxValue: 0.01
+      maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
     - parameterName: coe
       type: DISCRETE
