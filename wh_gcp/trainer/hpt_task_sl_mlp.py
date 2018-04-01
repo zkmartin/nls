@@ -36,6 +36,7 @@ def main(_):
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
   LEARNING_RATE = FLAGS.lr
   ACTIVATION = FLAGS.activation
+  FLAGS.smart_train = True
 
 
   # Get model

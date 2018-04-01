@@ -63,8 +63,9 @@ def main(_):
     model.identify(train_set, val_set, batch_size=BATCH_SIZE,
                    print_cycle=PRINT_CYCLE, epoch=EPOCH)
   else:
-    model.evaluate(train_set, start_at=1000, plot=False)
-    model.evaluate(test_set, start_at=1000, plot=False)
+    model.evaluate(train_set, start_at=MEMORY_DEPTH, plot=False)
+    model.evaluate(val_set, start_at=MEMORY_DEPTH, plot=False)
+    model.evaluate(test_set, start_at=MEMORY_DEPTH, plot=False)
 
   console.end()
 

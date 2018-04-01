@@ -21,7 +21,7 @@ PRINT_CYCLE = 10
 FLAGS.train = True
 # FLAGS.train = False
 # FLAGS.overwrite = True
-FLAGS.overwrite = False
+FLAGS.overwrite = True
 # FLAGS.save_best = False
 FLAGS.save_best = False
 
