@@ -1,8 +1,8 @@
 trainingInput:
   pythonVersion: "3.5"
   scaleTier: CUSTOM
-  mastertype: standard
-  workertype: standard
+  masterType: standard
+  workerType: standard
   parameterServerType: standard
   workerCount: 5
   parameterServerCount: 5

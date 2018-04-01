@@ -23,7 +23,7 @@ FLAGS.train = True
 # FLAGS.overwrite = True
 FLAGS.overwrite = False
 # FLAGS.save_best = False
-FLAGS.save_best = True
+FLAGS.save_best = False
 
 FLAGS.smart_train = True
 FLAGS.epoch_tol = 20
