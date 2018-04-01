@@ -11,21 +11,21 @@ WH_PATH = '../data/wiener_hammerstein/whb.tfd'
 VAL_SIZE = 20000
 
 MEMORY_DEPTH = 80
-D = MEMORY_DEPTH
+D = MEMORY_DEPTH*16
 NN_EPOCH = 10
-NN_BLOCKS = 20
-NN_LEARNING_RATE = 0.00003
+NN_BLOCKS = 1
+NN_LEARNING_RATE = 0.001
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
 
-FLAGS.train = False
+FLAGS.train = True
 # FLAGS.train = False
 # FLAGS.overwrite = True
 FLAGS.overwrite = False
 # FLAGS.save_best = False
 FLAGS.save_best = True
 
-FLAGS.smart_train = False
+FLAGS.smart_train = True
 FLAGS.epoch_tol = 20
 
 # Turn off overwrite while in save best mode

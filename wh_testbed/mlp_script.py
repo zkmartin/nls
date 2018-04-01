@@ -10,10 +10,11 @@ import wh_model_lib
 WH_PATH = '../data/wiener_hammerstein/whb.tfd'
 VAL_SIZE = 20000
 
+coe = 80
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
-NN_EPOCH = 50
-NN_HID_DIMS = [D] * 10
+NN_EPOCH = 300
+NN_HID_DIMS = [D*coe] * 1
 NN_LEARNING_RATE = 0.001
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
@@ -50,5 +51,6 @@ if FLAGS.train: model.identify(
 
 # Evaluation
 if EVALUATION:
-  model.evaluate(train_set, start_at=1000, plot=False)
-  model.evaluate(test_set, start_at=1000, plot=PLOT)
+  model.evaluate(train_set, start_at=MEMORY_DEPTH, plot=False)
+  model.evaluate(val_set, start_at=MEMORY_DEPTH, plot=False)
+  model.evaluate(test_set, start_at=MEMORY_DEPTH, plot=PLOT)
