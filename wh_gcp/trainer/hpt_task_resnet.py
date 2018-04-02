@@ -42,7 +42,7 @@ def main(_):
 
   # Get model
   model = model_lib.res_00(memory=MEMORY_DEPTH, blocks=NN_BLOCKS,
-                           actication=ACTIVATION, learning_rate=LEARNING_RATE)
+                           activation=ACTIVATION, learning_rate=LEARNING_RATE)
 
   # Load data set
   train_set, val_set, test_set = load_wiener_hammerstein(

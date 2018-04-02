@@ -92,7 +92,7 @@ def res_00(memory, blocks, activation='relu', learning_rate=0.001):
   mark = 'res'
   D = memory
 
-  # Initiate model
+# Initiate model
   model = NeuralNet(memory, mark=mark)
   nn = model.nn
   assert isinstance(nn, Predictor)
