@@ -11,6 +11,7 @@ flags = tf.app.flags
 flags.DEFINE_integer("order1", 2, "order1")
 flags.DEFINE_integer("order2", 2, "order2")
 flags.DEFINE_integer("order3", 2, "order3")
+flags.DEFINE_integer("memory", 80, "memory depth")
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
 
@@ -30,7 +31,7 @@ def main(_):
   WH_PATH = FLAGS.data_dir
 
   MARK = 'svn00'
-  MEMORY_DEPTH = 80
+  MEMORY_DEPTH = FLAGS.memory
   PRINT_CYCLE = 50
   EPOCH = 100
 
