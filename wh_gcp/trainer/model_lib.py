@@ -9,6 +9,8 @@ from tframe.layers import Activation
 from tframe.layers import Linear
 from tframe.layers import Input
 from tframe.layers.parametric_activation import Polynomial
+from tframe.nets.resnet import ResidualNet
+from tframe import pedia
 
 from models.neural_net import NeuralNet
 
@@ -81,6 +83,48 @@ def svn_00(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate
   # Build model
   nn.build(loss='euclid', metric='rms_ratio', metric_name='RMS(err)%',
            optimizer=tf.train.AdamOptimizer(learning_rate))
+
+  # Return model
+  return model
+
+def res_00(memory, blocks, activation='relu', learning_rate=0.001):
+  # Configurations
+  mark = 'res'
+  D = memory
+
+  # Initiate model
+  model = NeuralNet(memory, mark=mark)
+  nn = model.nn
+  assert isinstance(nn, Predictor)
+
+  # Add layers
+  nn.add(Input([D]))
+
+  def add_res_block():
+    net = nn.add(ResidualNet())
+    net.add(Linear(output_dim=D))
+    net.add(Activation(activation))
+    net.add(Linear(output_dim=D))
+    net.add_shortcut()
+    net.add(Activation(activation))
+
+  def add_res_block_poly():
+    net = nn.add(ResidualNet())
+    net.add(Linear(output_dim=D))
+    net.add(Activation(activation))
+    net.add(Linear(output_dim=D))
+    net.add_shortcut()
+    net.add(Activation(activation))
+
+  if activation == 'poly':
+    for _ in range(blocks):add_res_block_poly()
+  else:
+    for _ in range(blocks): add_res_block()
+
+  nn.add(Linear(output_dim=1))
+
+  # Build model
+  model.default_build(learning_rate)
 
   # Return model
   return model
