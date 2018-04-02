@@ -3,7 +3,7 @@ trainingInput:
   scaleTier: BASIC
   hyperparameters:
     goal: MINIMIZE
-    maxTrials: 50
+    maxTrials: 80
     maxParallelTrials: 5
     hyperparameterMetricTag: best_metric_sum
     enableTrialEarlyStopping: TRUE
