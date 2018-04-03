@@ -1,0 +1,35 @@
+trainingInput:
+  pythonVersion: "3.5"
+  scaleTier: BASIC
+  hyperparameters:
+    goal: MINIMIZE
+    maxTrials: 80
+    maxParallelTrials: 5
+    hyperparameterMetricTag: best_metric_sum
+    enableTrialEarlyStopping: TRUE
+    params:
+    - parameterName: lr
+      type: DOUBLE
+      minValue: 0.00001
+      maxValue: 0.001
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: order1
+      type: INTEGER
+      minValue: 1
+      maxValue: 5
+      scaleType: UNIT_LINEAR_SCALE
+    - parameterName: memory
+      type: INTEGER
+      minValue: 80
+      maxValue: 120
+      scaleType: UNI
+    - parameterName: coe
+      type: DISCRETE
+      discreteValues:
+      - 2
+      - 8
+      - 16
+      - 32
+      - 60
+      - 80
+      - 100
