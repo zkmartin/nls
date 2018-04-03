@@ -22,7 +22,7 @@ trainingInput:
       type: INTEGER
       minValue: 80
       maxValue: 120
-      scaleType: UNI
+      scaleType: UNIT_LINEAR_SCALE
     - parameterName: coe
       type: DISCRETE
       discreteValues:
