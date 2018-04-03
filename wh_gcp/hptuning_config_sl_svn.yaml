@@ -16,7 +16,7 @@ trainingInput:
     - parameterName: order1
       type: INTEGER
       minValue: 1
-      maxValue: 5
+      maxValue: 25
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: memory
       type: INTEGER
