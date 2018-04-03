@@ -26,7 +26,7 @@ trainingInput:
     - parameterName: blocks
       type: INTEGER
       minValue: 1
-      maxValue: 20
+      maxValue: 2
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: activation
       type: CATEGORICAL
@@ -36,3 +36,13 @@ trainingInput:
       - tanh
       - leakyrelu
       - poly
+    - parameterName: order1
+      type: INTEGER
+      minValue: 2
+      maxValue: 4
+      scaleType: UNIT_LINEAR_SCALE
+    - parameterName: order2
+      type: INTEGER
+      minValue: 2
+      maxValue: 4
+      scaleType: UNIT_LINEAR_SCALE

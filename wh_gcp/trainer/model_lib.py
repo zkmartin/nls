@@ -108,7 +108,7 @@ def svn_01(memory_depth, mark, hidden_dim, order1,learning_rate=0.001):
   # Return model
   return model
 
-def res_00(memory, blocks, activation='relu', learning_rate=0.001):
+def res_00(memory, blocks, order1, order2, activation='relu', learning_rate=0.001):
   # Configurations
   mark = 'res'
   D = memory
@@ -132,10 +132,10 @@ def res_00(memory, blocks, activation='relu', learning_rate=0.001):
   def add_res_block_poly():
     net = nn.add(ResidualNet())
     net.add(Linear(output_dim=D))
-    net.add(Activation(activation))
+    net.add(Polynomial(order=order1))
     net.add(Linear(output_dim=D))
     net.add_shortcut()
-    net.add(Activation(activation))
+    net.add(Polynomial(order=order2))
 
   if activation == 'poly':
     for _ in range(blocks):add_res_block_poly()

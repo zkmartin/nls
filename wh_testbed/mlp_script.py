@@ -13,9 +13,9 @@ VAL_SIZE = 20000
 coe = 80
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
-NN_EPOCH = 50
+NN_EPOCH = 30
 NN_HID_DIMS = [D*coe] * 1
-NN_LEARNING_RATE = 0.001
+NN_LEARNING_RATE = 0.00005
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
 
@@ -23,7 +23,7 @@ FLAGS.train = True
 # FLAGS.train = False
 FLAGS.overwrite = True
 # FLAGS.overwrite = False
-FLAGS.save_best = False
+FLAGS.save_best = True
 # FLAGS.save_best = True
 
 FLAGS.smart_train = False

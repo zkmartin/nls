@@ -10,7 +10,10 @@ flags = tf.app.flags
 
 flags.DEFINE_integer("coe", 2, "layer_dim coe")
 flags.DEFINE_integer("blocks", 1, "the blocks of resnet")
+flags.DEFINE_integer("order1", 2, "the order of polynomial")
+flags.DEFINE_integer("order2", 2, "the order of polynomial")
 flags.DEFINE_string("activation", 'relu', "activation function")
+
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
 
@@ -33,6 +36,8 @@ def main(_):
   PRINT_CYCLE = 50
   EPOCH = 100
   NN_BLOCKS = FLAGS.blocks
+  order1 = FLAGS.order1
+  order2 = FLAGS.order2
 
 
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
@@ -41,7 +46,7 @@ def main(_):
 
 
   # Get model
-  model = model_lib.res_00(memory=MEMORY_DEPTH, blocks=NN_BLOCKS,
+  model = model_lib.res_00(memory=MEMORY_DEPTH, blocks=NN_BLOCKS, order1=order1, order2=order2,
                            activation=ACTIVATION, learning_rate=LEARNING_RATE)
 
   # Load data set
