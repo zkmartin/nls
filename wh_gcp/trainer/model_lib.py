@@ -87,6 +87,27 @@ def svn_00(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate
   # Return model
   return model
 
+def svn_01(memory_depth, mark, hidden_dim, order1,learning_rate=0.001):
+
+  strength = 0
+  # Initiate a predictor
+  model = NeuralNet(memory_depth, mark=mark)
+  nn = model.nn
+  assert isinstance(nn, Predictor)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial(order=order1))
+  nn.add(Linear(output_dim=1, weight_regularizer='l2', strength=strength, use_bias=False))
+
+  # Build model
+  nn.build(loss='euclid', metric='rms_ratio', metric_name='RMS(err)%',
+           optimizer=tf.train.AdamOptimizer(learning_rate))
+
+  # Return model
+  return model
+
 def res_00(memory, blocks, activation='relu', learning_rate=0.001):
   # Configurations
   mark = 'res'

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default configuration
-MODEL_MARK=zk_svn
+MODEL_MARK=zk_sl_svn
 JOB_NAME=$MODEL_MARK
 BUCKET_NAME=nls-nn-bucket
 GS_ROOT=gs://$BUCKET_NAME
@@ -54,9 +54,9 @@ echo ... batch size: $batch_size
 gcloud ml-engine jobs submit training $JOB_NAME \
 	--job-dir $OUTPUT_PATH \
 	--runtime-version 1.6 \
-	--config hptuning_config_svn.yaml \
+	--config hptuning_config_sl_svn.yaml \
 	--package-path ${PACKAGE_NAME}/ \
-	--module-name ${PACKAGE_NAME}.hpt_task_svn \
+	--module-name ${PACKAGE_NAME}.hpt_task_sl_svn \
 	--region $REGION \
 	-- \
 	--mark $MODEL_MARK \
