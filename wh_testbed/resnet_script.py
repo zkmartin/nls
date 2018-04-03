@@ -12,11 +12,18 @@ VAL_SIZE = 20000
 
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH*16
-NN_EPOCH = 200
+NN_EPOCH = 300
 NN_BLOCKS = 1
-NN_LEARNING_RATE = 0.001
+LEARNING_RATE = 0.001
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
+blocks = 2
+order1 = 4
+order2 = 4
+coe = 16
+LAYER_DIM = MEMORY_DEPTH*coe
+ACTIVATION = 'poly'
+
 
 FLAGS.train = True
 # FLAGS.train = False
@@ -26,7 +33,7 @@ FLAGS.overwrite = True
 FLAGS.save_best = False
 
 FLAGS.smart_train = True
-FLAGS.epoch_tol = 20
+FLAGS.epoch_tol = 50
 
 # Turn off overwrite while in save best mode
 FLAGS.overwrite = FLAGS.overwrite and not FLAGS.save_best and FLAGS.train
@@ -41,7 +48,8 @@ assert isinstance(train_set, DataSet)
 assert isinstance(val_set, DataSet)
 assert isinstance(test_set, DataSet)
 
-model = wh_model_lib.res_00(MEMORY_DEPTH, NN_BLOCKS, NN_LEARNING_RATE)
+model = wh_model_lib.res_00(memory=MEMORY_DEPTH, blocks=NN_BLOCKS, order1=order1, order2=order2,
+                         activation=ACTIVATION, learning_rate=LEARNING_RATE)
 
 # Define model and identify
 if FLAGS.train: model.identify(

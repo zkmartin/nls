@@ -54,13 +54,12 @@ def test_00(memory, learning_rate=0.001):
 
 # region : ResNet
 
-def res_00(memory, blocks, learning_rate=0.001):
+def res_00(memory, blocks, order1, order2, activation='relu', learning_rate=0.001):
   # Configurations
   mark = 'res'
   D = memory
-  activation = 'relu'
 
-  # Initiate model
+# Initiate model
   model = NeuralNet(memory, mark=mark)
   nn = model.nn
   assert isinstance(nn, Predictor)
@@ -76,7 +75,18 @@ def res_00(memory, blocks, learning_rate=0.001):
     net.add_shortcut()
     net.add(Activation(activation))
 
-  for _ in range(blocks): add_res_block()
+  def add_res_block_poly():
+    net = nn.add(ResidualNet())
+    net.add(Linear(output_dim=D))
+    net.add(Polynomial(order=order1))
+    net.add(Linear(output_dim=D))
+    net.add_shortcut()
+    net.add(Polynomial(order=order2))
+
+  if activation == 'poly':
+    for _ in range(blocks):add_res_block_poly()
+  else:
+    for _ in range(blocks): add_res_block()
 
   nn.add(Linear(output_dim=1))
 

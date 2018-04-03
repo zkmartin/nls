@@ -25,6 +25,9 @@ def main(_):
     FLAGS.smart_train = False
     FLAGS.save_best = False
 
+  FLAGS.smart_train = True
+  FLAGS.save_best = True
+
   WH_PATH = FLAGS.data_dir
 
   MARK = 'mlp01'
