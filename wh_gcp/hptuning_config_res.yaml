@@ -3,7 +3,7 @@ trainingInput:
   scaleTier: BASIC
   hyperparameters:
     goal: MINIMIZE
-    maxTrials: 80
+    maxTrials: 100
     maxParallelTrials: 3
     hyperparameterMetricTag: best_metric_sum
     enableTrialEarlyStopping: TRUE
@@ -26,7 +26,7 @@ trainingInput:
     - parameterName: blocks
       type: INTEGER
       minValue: 1
-      maxValue: 2
+      maxValue: 5
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: activation
       type: CATEGORICAL
