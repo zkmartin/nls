@@ -13,7 +13,7 @@ VAL_SIZE = 20000
 coe = 80
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
-NN_EPOCH = 300
+NN_EPOCH = 50
 NN_HID_DIMS = [D*coe] * 1
 NN_LEARNING_RATE = 0.001
 BATCH_SIZE = 32
@@ -26,8 +26,8 @@ FLAGS.overwrite = True
 FLAGS.save_best = False
 # FLAGS.save_best = True
 
-FLAGS.smart_train = True
-FLAGS.epoch_tol = 20
+FLAGS.smart_train = False
+FLAGS.epoch_tol = 50
 
 # Turn off overwrite while in save best mode
 FLAGS.overwrite = FLAGS.overwrite and not FLAGS.save_best and FLAGS.train

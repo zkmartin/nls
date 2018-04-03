@@ -15,18 +15,18 @@ trainingInput:
       scaleType: UNIT_LOG_SCALE
     - parameterName: order1
       type: INTEGER
-      minValue: 1
-      maxValue: 5
+      minValue: 2
+      maxValue: 4
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: order2
       type: INTEGER
-      minValue: 1
-      maxValue: 5
+      minValue: 2
+      maxValue: 4
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: order3
       type: INTEGER
-      minValue: 1
-      maxValue: 5
+      minValue: 2
+      maxValue: 4
       scaleType: UNIT_LINEAR_SCALE
     - parameterName: memory
       type: INTEGER
