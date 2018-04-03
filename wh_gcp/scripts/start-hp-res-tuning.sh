@@ -9,7 +9,7 @@ REGION=us-central1
 PACKAGE_NAME=trainer
 POSTFIX=$(date -u +%d%H%M)
 
-epoch=50
+epoch=300
 batch_size=64
 
 # Prepare packages
