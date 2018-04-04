@@ -16,16 +16,20 @@ trainingInput:
     - parameterName: lr
       type: DOUBLE
       minValue: 0.00001
-      maxValue: 0.1
+      maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
-    - parameterName: batch_size
+    - parameterName: coe
       type: DISCRETE
       discreteValues:
-      - 4
       - 8
       - 16
       - 32
-      - 64
-      - 128
-      - 256
-      - 512
+      - 60
+      - 80
+    - parameterName: activation
+      type: CATEGORICAL
+      categoricalValues:
+      - relu
+      - sigmoid
+      - tanh
+      - leakyrelu

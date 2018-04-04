@@ -41,7 +41,6 @@ def main(_):
   ACTIVATION = FLAGS.activation
   FLAGS.smart_train = True
 
-
   # Get model
   model = model_lib.mlp_01(
     MARK, MEMORY_DEPTH, LAYER_DIM, LEARNING_RATE, activation=ACTIVATION)

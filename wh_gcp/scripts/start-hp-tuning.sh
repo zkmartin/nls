@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default configuration
-MODEL_MARK=mlp
+MODEL_MARK=zk-mlp
 JOB_NAME=$MODEL_MARK
 BUCKET_NAME=nls-nn-bucket
 GS_ROOT=gs://$BUCKET_NAME
@@ -9,8 +9,8 @@ REGION=us-central1
 PACKAGE_NAME=trainer
 POSTFIX=$(date -u +%d%H%M)
 
-epoch=3
-batch_size=64
+epoch=300
+batch_size=32
 
 # Prepare packages
 pkg_names='tframe models signals'

@@ -156,9 +156,10 @@ def net_00(memory_depth, learning_rate=0.001):
 
 # region : MLP
 
-def mlp_00(memory_depth, hidden_dims, learning_rate=0.001):
-  activation = 'relu'
-  mark = 'mlp_D{}_L{}_{}'.format(memory_depth, len(hidden_dims), activation)
+def mlp_00(mark, memory_depth, layer_dim, layer_num, learning_rate,
+           activation='relu'):
+  # Configurations
+  pass
 
   # Initiate a predictor
   model = NeuralNet(memory_depth, mark=mark)
@@ -167,14 +168,35 @@ def mlp_00(memory_depth, hidden_dims, learning_rate=0.001):
 
   # Add layers
   nn.add(Input([memory_depth]))
-  for i, dim in enumerate(hidden_dims):
-    nn.add(Linear(output_dim=dim))
+  for i in range(layer_num):
+    nn.add(Linear(output_dim=layer_dim))
     nn.add(Activation(activation))
   nn.add(Linear(output_dim=1))
 
   # Build model
-  nn.build(loss='euclid', metric='rms_ratio', metric_name='RMS(err)%',
-           optimizer=tf.train.AdamOptimizer(learning_rate))
+  model.default_build(learning_rate)
+
+  # Return model
+  return model
+
+def mlp_01(mark, memory_depth, layer_dim, learning_rate,
+           activation='relu'):
+  # Configurations
+  pass
+
+  # Initiate a predictor
+  model = NeuralNet(memory_depth, mark=mark)
+  nn = model.nn
+  assert isinstance(nn, Predictor)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+  nn.add(Linear(output_dim=layer_dim))
+  nn.add(Activation(activation))
+  nn.add(Linear(output_dim=1))
+
+  # Build model
+  model.default_build(learning_rate)
 
   # Return model
   return model

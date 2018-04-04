@@ -21,17 +21,19 @@ def main(_):
   # Configurations
   MARK = 'mlp00'
   MEMORY_DEPTH = 80
-  HIDDEN_DIM = MEMORY_DEPTH * 16
-  EPOCH = 5000
-  LR = 0.001
+  coe = 8
+  HIDDEN_DIM = MEMORY_DEPTH * coe
+  EPOCH = 300
+  LR = 0.00008
   BATCH_SIZE = 32
-  PRINT_CYCLE = 100
-  BRANCH_INDEX = 2
+  PRINT_CYCLE = 10
+  BRANCH_INDEX = 0
   FIX_PRE_WEIGHT = False
+  ACTIVATION = 'leakyrelu'
 
   # FLAGS.train = False
   FLAGS.overwrite = True and BRANCH_INDEX == 0
-  FLAGS.smart_train = True
+  FLAGS.smart_train = False
   FLAGS.save_best = True and BRANCH_INDEX > 0
   FLAGS.summary = False
   FLAGS.save_model = False
@@ -45,7 +47,7 @@ def main(_):
   assert isinstance(test_set, DataSet)
 
   # Get model
-  model = lott_lib.mlp00(MARK, MEMORY_DEPTH, HIDDEN_DIM, LR)
+  model = lott_lib.mlp00(MARK, MEMORY_DEPTH, HIDDEN_DIM, LR, ACTIVATION)
 
   # Train or evaluate
   if FLAGS.train:

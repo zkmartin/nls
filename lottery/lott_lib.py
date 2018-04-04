@@ -7,7 +7,7 @@ from tframe.layers import Input
 from tframe.layers import Linear
 
 
-def mlp00(mark, memory_depth, hidden_dim, learning_rate):
+def mlp00(mark, memory_depth, hidden_dim, learning_rate, activation):
   # Initiate a neural net
   model = NeuralNet(memory_depth, mark=mark, bamboo=True)
   nn = model.nn
@@ -17,17 +17,17 @@ def mlp00(mark, memory_depth, hidden_dim, learning_rate):
   nn.add(Input([memory_depth]))
 
   nn.add(Linear(output_dim=hidden_dim))
-  nn.add(Activation('relu'))
+  nn.add(Activation(activation))
   branch = nn.add_branch()
   branch.add(Linear(output_dim=1))
 
   nn.add(Linear(output_dim=hidden_dim))
-  nn.add(Activation('relu'))
+  nn.add(Activation(activation))
   branch = nn.add_branch()
   branch.add(Linear(output_dim=1))
 
   nn.add(Linear(output_dim=hidden_dim))
-  nn.add(Activation('relu'))
+  nn.add(Activation(activation))
   nn.add(Linear(output_dim=1))
 
   # Build model

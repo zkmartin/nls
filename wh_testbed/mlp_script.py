@@ -10,16 +10,18 @@ import wh_model_lib
 WH_PATH = '../data/wiener_hammerstein/whb.tfd'
 VAL_SIZE = 20000
 
-coe = 80
+MARK = 'sl-mlp'
+coe = 16
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
-NN_EPOCH = 30
-NN_HID_DIMS = [D*coe] * 1
-NN_LEARNING_RATE = 0.00008
+NN_EPOCH = 300
+LAYER_DIM = D*coe
+LEARNING_RATE = 0.00008
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
+ACTIVATION = 'leakyrelu'
 
-FLAGS.train = True
+FLAGS.train = False
 # FLAGS.train = False
 FLAGS.overwrite = True
 # FLAGS.overwrite = False
@@ -28,6 +30,8 @@ FLAGS.save_best = True
 
 FLAGS.smart_train = False
 FLAGS.epoch_tol = 50
+FLAGS.summary = False
+FLAGS.snapshots = False
 
 # Turn off overwrite while in save best mode
 FLAGS.overwrite = FLAGS.overwrite and not FLAGS.save_best and FLAGS.train
@@ -42,7 +46,8 @@ assert isinstance(train_set, DataSet)
 assert isinstance(val_set, DataSet)
 assert isinstance(test_set, DataSet)
 
-model = wh_model_lib.mlp_00(MEMORY_DEPTH, NN_HID_DIMS, NN_LEARNING_RATE)
+model = wh_model_lib.mlp_01(
+  MARK, MEMORY_DEPTH, LAYER_DIM, LEARNING_RATE, activation=ACTIVATION)
 
 # Define model and identify
 if FLAGS.train: model.identify(
