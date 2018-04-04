@@ -3,31 +3,24 @@ trainingInput:
   scaleTier: BASIC
   hyperparameters:
     goal: MINIMIZE
-    maxTrials: 50
+    maxTrials: 80
     maxParallelTrials: 5
     hyperparameterMetricTag: best_metric_sum
     enableTrialEarlyStopping: TRUE
     params:
     - parameterName: lr
       type: DOUBLE
-      minValue: 0.00001
+      minValue: 0.000001
       maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
     - parameterName: coe
       type: DISCRETE
       discreteValues:
-      - 2
       - 8
       - 16
-      - 32
-      - 60
-      - 80
-      - 100
     - parameterName: activation
       type: CATEGORICAL
       categoricalValues:
       - relu
-      - sigmoid
-      - tanh
       - leakyrelu
 

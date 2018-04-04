@@ -10,25 +10,25 @@ import wh_model_lib
 WH_PATH = '../data/wiener_hammerstein/whb.tfd'
 VAL_SIZE = 20000
 
-MARK = 'sl-mlp'
+MARK = 'sl-mlp-smart_train'
 coe = 16
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
 NN_EPOCH = 300
 LAYER_DIM = D*coe
-LEARNING_RATE = 0.00008
+LEARNING_RATE = 0.0005
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
 ACTIVATION = 'leakyrelu'
 
-FLAGS.train = False
+FLAGS.train = True
 # FLAGS.train = False
 FLAGS.overwrite = True
 # FLAGS.overwrite = False
 FLAGS.save_best = True
 # FLAGS.save_best = True
 
-FLAGS.smart_train = False
+FLAGS.smart_train = True
 FLAGS.epoch_tol = 50
 FLAGS.summary = False
 FLAGS.snapshots = False

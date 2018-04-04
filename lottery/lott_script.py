@@ -23,8 +23,8 @@ def main(_):
   MEMORY_DEPTH = 80
   coe = 8
   HIDDEN_DIM = MEMORY_DEPTH * coe
-  EPOCH = 300
-  LR = 0.00008
+  EPOCH = 500
+  LR = 0.001
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
   BRANCH_INDEX = 0
@@ -33,11 +33,13 @@ def main(_):
 
   # FLAGS.train = False
   FLAGS.overwrite = True and BRANCH_INDEX == 0
-  FLAGS.smart_train = False
+  FLAGS.smart_train = True
   FLAGS.save_best = True and BRANCH_INDEX > 0
   FLAGS.summary = False
   FLAGS.save_model = False
   FLAGS.snapshot = False
+
+  FLAGS.epoch_tol = 50
 
   # Load data
   train_set, val_set, test_set = load_wiener_hammerstein(

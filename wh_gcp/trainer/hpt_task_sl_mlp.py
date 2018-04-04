@@ -33,13 +33,14 @@ def main(_):
   MARK = 'mlp01'
   MEMORY_DEPTH = 80
   PRINT_CYCLE = 50
-  EPOCH = 100
+  EPOCH = 300
 
 
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
   LEARNING_RATE = FLAGS.lr
   ACTIVATION = FLAGS.activation
   FLAGS.smart_train = True
+
 
   # Get model
   model = model_lib.mlp_01(

@@ -87,7 +87,7 @@ def svn_00(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate
   # Return model
   return model
 
-def svn_01(memory_depth, mark, hidden_dim, order1,learning_rate=0.001):
+def svn_01(memory_depth, mark, hidden_dim, order1, learning_rate=0.001):
 
   strength = 0
   # Initiate a predictor
