@@ -1,4 +1,5 @@
 from models import NeuralNet
+import tensorflow as tf
 
 from tframe.models.sl.bamboo import Bamboo
 
@@ -21,7 +22,8 @@ def mlp00(mark, memory_depth, hidden_dim, learning_rate, activation):
   branch = nn.add_branch()
   branch.add(Linear(output_dim=1))
 
-  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Linear(output_dim=hidden_dim, weight_initializer='identify',
+                bias_initializer=tf.zeros_initializer()))
   nn.add(Activation(activation))
   branch = nn.add_branch()
   branch.add(Linear(output_dim=1))
