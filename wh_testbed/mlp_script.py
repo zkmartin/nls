@@ -12,6 +12,7 @@ VAL_SIZE = 20000
 
 MARK = 'sl-mlp'
 coe = 2
+
 MEMORY_DEPTH = 80
 D = MEMORY_DEPTH
 NN_EPOCH = 1000
@@ -21,7 +22,6 @@ LEARNING_RATE = 0.00008
 BATCH_SIZE = 32
 PRINT_CYCLE = 10
 ACTIVATION = 'leakyrelu'
-
 
 FLAGS.train = True
 # FLAGS.train = False
