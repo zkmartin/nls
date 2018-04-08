@@ -24,12 +24,12 @@ def main(_):
   coe = 8
   HIDDEN_DIM = MEMORY_DEPTH * coe
   EPOCH = 300
-  LR = 0.00008
+  LR = 0.000088
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 0
-  FIX_PRE_WEIGHT = False
-  ACTIVATION = 'leakyrelu'
+  BRANCH_INDEX = 1
+  FIX_PRE_WEIGHT = True
+  ACTIVATION = 'relu'
 
   # FLAGS.train = False
   FLAGS.overwrite = True and BRANCH_INDEX == 0
@@ -38,6 +38,7 @@ def main(_):
   FLAGS.summary = False
   FLAGS.save_model = False
   FLAGS.snapshot = False
+  FLAGS.epoch_tol = 50
 
   # Load data
   train_set, val_set, test_set = load_wiener_hammerstein(

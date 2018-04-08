@@ -13,6 +13,7 @@ from tframe.layers import Linear
 from tframe.layers import Input
 from tframe.layers.homogeneous import Homogeneous
 from tframe.layers.parametric_activation import Polynomial
+from tframe.layers.parametric_activation import Polynomial_Relu
 from tframe.nets.resnet import ResidualNet
 from tframe import pedia
 
@@ -103,7 +104,7 @@ def res_00(memory, blocks, order1, order2, activation='relu', learning_rate=0.00
 def svn_00(memory, learning_rate=0.001):
   # Configuration
   D = memory
-  hidden_dims = [2 * D] * 4
+  hidden_dims = [2 * D] * 3
   p_order = 2
   mark = 'svn_{}_{}'.format(hidden_dims, p_order)
 
@@ -122,6 +123,56 @@ def svn_00(memory, learning_rate=0.001):
   # Build model
   model.default_build(learning_rate)
 
+  return model
+
+def svn_01(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate=0.001):
+
+  strength = 0
+  # Initiate a predictor
+  model = NeuralNet(memory_depth, mark=mark)
+  nn = model.nn
+  assert isinstance(nn, Predictor)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial(order=order1))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial(order=order2))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial(order=order3))
+  nn.add(Linear(output_dim=1, weight_regularizer='l2', strength=strength, use_bias=False))
+
+  # Build model
+  nn.build(loss='euclid', metric='rms_ratio', metric_name='RMS(err)%',
+           optimizer=tf.train.AdamOptimizer(learning_rate))
+
+  # Return model
+  return model
+
+def svn_02(memory_depth, mark, hidden_dim, order1, order2, order3, learning_rate=0.001):
+
+  strength = 0
+  # Initiate a predictor
+  model = NeuralNet(memory_depth, mark=mark)
+  nn = model.nn
+  assert isinstance(nn, Predictor)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial_Relu(order=order1))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial_Relu(order=order2))
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Polynomial_Relu(order=order3))
+  nn.add(Linear(output_dim=1, weight_regularizer='l2', strength=strength, use_bias=False))
+
+  # Build model
+  nn.build(loss='euclid', metric='rms_ratio', metric_name='RMS(err)%',
+           optimizer=tf.train.AdamOptimizer(learning_rate))
+
+  # Return model
   return model
 
 # endregion : SVN
