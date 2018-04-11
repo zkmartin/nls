@@ -10,6 +10,9 @@ flags = tf.app.flags
 
 flags.DEFINE_integer("coe", 2, "layer_dim coe")
 flags.DEFINE_string("activation", 'relu', "activation function")
+flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
+flags.DEFINE_float('lr2', 0.0001, 'the lr for the second layer')
+flags.DEFINE_float('lr3', 0.0001, 'the lr for the third layer')
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
 
@@ -30,20 +33,20 @@ def main(_):
 
   WH_PATH = FLAGS.data_dir
 
-  MARK = 'mlp01'
+  MARK = 'lottery01'
   MEMORY_DEPTH = 80
   PRINT_CYCLE = 50
-  EPOCH = 300
+  EPOCH = 500
+  LR = 0.000088
 
 
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
-  LEARNING_RATE = FLAGS.lr
+  LR_LIST = [FLAGS.lr1, FLAGS.lr2, FLAGS.lr3]
   ACTIVATION = FLAGS.activation
   FLAGS.smart_train = True
 
   # Get model
-  model = model_lib.mlp_01(
-    MARK, MEMORY_DEPTH, LAYER_DIM, LEARNING_RATE, activation=ACTIVATION)
+  model = model_lib.mlp02(MARK, MEMORY_DEPTH, LAYER_DIM, LR, ACTIVATION)
 
   # Load data set
   train_set, val_set, test_set = load_wiener_hammerstein(
@@ -55,7 +58,8 @@ def main(_):
   # Train
   if FLAGS.train:
     model.identify(train_set, val_set, batch_size=64,
-                   print_cycle=PRINT_CYCLE, epoch=EPOCH)
+                   print_cycle=PRINT_CYCLE, epoch=EPOCH,
+                   lr_list=LR_LIST)
 
   console.end()
 

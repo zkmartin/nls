@@ -26,9 +26,10 @@ def main(_):
 
   EPOCH = 500
   LR = 0.000058
+  LR_LIST = [0.000088]*3
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 1
+  BRANCH_INDEX = 0
   FIX_PRE_WEIGHT = True
   ACTIVATION = 'relu'
 
@@ -49,36 +50,14 @@ def main(_):
   assert isinstance(test_set, DataSet)
 
   # Get model
-  model = lott_lib.mlp00(MARK, MEMORY_DEPTH, HIDDEN_DIM, LR, ACTIVATION)
-
-  branch_1_weights = 'FeedforwardNet/branch/linear/weights:0'
-  branch_1_bias = 'FeedforwardNet/branch/linear/biases:0'
-  branch_2_weights = 'FeedforwardNet/branch2/linear/weights:0'
-  branch_2_bias = 'FeedforwardNet/branch2/linear/biases:0'
-  # model.nn.variable_assign(branch_1_weights, branch_2_weights)
-  # model.nn.variable_assign(branch_1_bias, branch_2_bias)
-  with model.nn._graph.as_default():
-    variables = tf.trainable_variables()
-    b = 1
-  #   print(model.nn._session.run(variables[2]))
-  #   print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  #   print(model.nn._session.run(variables[6]))
-  #   print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  #   print(model.nn._session.run(variables[3]))
-  #   print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  #   print(model.nn._session.run(variables[7]))
-  #   print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  #   print(model.nn._session.run(variables[4]))
-  #   print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-  #   print(model.nn._session.run(variables[5]))
-  #   a = 1
-
+  model = lott_lib.mlp01(MARK, MEMORY_DEPTH, HIDDEN_DIM, LR, ACTIVATION)
 
   # Train or evaluate
   if FLAGS.train:
     model.identify(train_set, val_set, batch_size=BATCH_SIZE,
                    print_cycle=PRINT_CYCLE, epoch=EPOCH,
-                   branch_index=BRANCH_INDEX, freeze=FIX_PRE_WEIGHT)
+                   branch_index=BRANCH_INDEX, lr_list=LR_LIST, freeze=FIX_PRE_WEIGHT)
+
   else:
     BRANCH_INDEX = 1
     model.evaluate(train_set, start_at=MEMORY_DEPTH, branch_index=BRANCH_INDEX)

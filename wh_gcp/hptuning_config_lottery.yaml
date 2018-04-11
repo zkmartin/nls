@@ -1,0 +1,35 @@
+trainingInput:
+  pythonVersion: "3.5"
+  scaleTier: BASIC
+  hyperparameters:
+    goal: MINIMIZE
+    maxTrials: 80
+    maxParallelTrials: 5
+    hyperparameterMetricTag: best_metric_sum
+    enableTrialEarlyStopping: TRUE
+    params:
+    - parameterName: lr1
+      type: DOUBLE
+      minValue: 0.000001
+      maxValue: 0.001
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: lr2
+      type: DOUBLE
+      minValue: 0.000001
+      maxValue: 0.001
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: lr3
+      type: DOUBLE
+      minValue: 0.000001
+      maxValue: 0.001
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: coe
+      type: DISCRETE
+      discreteValues:
+      - 8
+      - 16
+    - parameterName: activation
+      type: CATEGORICAL
+      categoricalValues:
+      - relu
+      - tanh

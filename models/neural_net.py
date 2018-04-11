@@ -34,9 +34,12 @@ class NeuralNet(Model):
     self.degree = degree
     # TODO: compromise
     bamboo = kwargs.get('bamboo', False)
+    identity_inital = kwargs.get('identity_initial', False)
     if degree is not None:
       self.nn = VolterraNet(degree, memory_depth, mark, **kwargs)
-    elif bamboo: self.nn = Bamboo(mark=mark)
+    elif bamboo:
+      if identity_inital:self.nn = Bamboo(mark=mark, identity=True)
+      else: self.nn = Bamboo(mark=mark)
     else: self.nn = Predictor(mark=mark)
 
   # region : Public Methods
@@ -62,7 +65,8 @@ class NeuralNet(Model):
                batch_size=64, print_cycle=100, snapshot_cycle=1000,
                snapshot_function=None, epoch=1, **kwargs):
     # Train
-    self.nn.train(batch_size=batch_size, training_set=training_set,
+    train_method = self.nn.train if not isinstance(self.nn, Bamboo) else self.nn.train_to_the_top
+    train_method(batch_size=batch_size, training_set=training_set,
                   validation_set=val_set, print_cycle=print_cycle,
                   snapshot_cycle=snapshot_cycle, epoch=epoch, probe=None,
                   snapshot_function=snapshot_function, **kwargs)

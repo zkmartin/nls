@@ -5,6 +5,7 @@ from __future__ import print_function
 import tensorflow as tf
 
 from tframe import Predictor
+from tframe.models.sl.bamboo import Bamboo
 from tframe.layers import Activation
 from tframe.layers import Linear
 from tframe.layers import Input
@@ -58,6 +59,36 @@ def mlp_01(mark, memory_depth, layer_dim, learning_rate,
 
   # Build model
   model.default_build(learning_rate)
+
+  # Return model
+  return model
+
+def mlp02(mark, memory_depth, hidden_dim, learning_rate, activation):
+  # Initiate a neural net
+  model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=True)
+  nn = model.nn
+  assert isinstance(nn, Bamboo)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Activation(activation))
+  branch = nn.add_branch()
+  branch.add(Linear(output_dim=1))
+
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Activation(activation))
+  branch = nn.add_branch()
+  branch.add(Linear(output_dim=1))
+
+  nn.add(Linear(output_dim=hidden_dim))
+  nn.add(Activation(activation))
+  nn.add(Linear(output_dim=1))
+
+  # Build model
+  model.default_build(learning_rate)
+
 
   # Return model
   return model
