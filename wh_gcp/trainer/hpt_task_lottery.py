@@ -9,6 +9,7 @@ import trainer.model_lib as model_lib
 flags = tf.app.flags
 
 flags.DEFINE_integer("coe", 2, "layer_dim coe")
+flags.DEFINE_integer("branches", 2, "the branches of the model")
 flags.DEFINE_string("activation", 'relu', "activation function")
 flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
 flags.DEFINE_float('lr2', 0.0001, 'the lr for the second layer')
@@ -43,10 +44,11 @@ def main(_):
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
   LR_LIST = [FLAGS.lr1, FLAGS.lr2, FLAGS.lr3]
   ACTIVATION = FLAGS.activation
+  BRANCHES = FLAGS.branches
   FLAGS.smart_train = True
 
   # Get model
-  model = model_lib.mlp02(MARK, MEMORY_DEPTH, LAYER_DIM, LR, ACTIVATION)
+  model = model_lib.mlp02(MARK, MEMORY_DEPTH, BRANCHES, LAYER_DIM, LR, ACTIVATION)
 
   # Load data set
   train_set, val_set, test_set = load_wiener_hammerstein(

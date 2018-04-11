@@ -63,7 +63,7 @@ def mlp_01(mark, memory_depth, layer_dim, learning_rate,
   # Return model
   return model
 
-def mlp02(mark, memory_depth, hidden_dim, learning_rate, activation):
+def mlp02(mark, memory_depth, layer_num, hidden_dim, learning_rate, activation):
   # Initiate a neural net
   model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=True)
   nn = model.nn
@@ -72,15 +72,11 @@ def mlp02(mark, memory_depth, hidden_dim, learning_rate, activation):
   # Add layers
   nn.add(Input([memory_depth]))
 
-  nn.add(Linear(output_dim=hidden_dim))
-  nn.add(Activation(activation))
-  branch = nn.add_branch()
-  branch.add(Linear(output_dim=1))
-
-  nn.add(Linear(output_dim=hidden_dim))
-  nn.add(Activation(activation))
-  branch = nn.add_branch()
-  branch.add(Linear(output_dim=1))
+  for _ in range(layer_num):
+    nn.add(Linear(output_dim=hidden_dim))
+    nn.add(Activation(activation))
+    branch = nn.add_branch()
+    branch.add(Linear(output_dim=1))
 
   nn.add(Linear(output_dim=hidden_dim))
   nn.add(Activation(activation))
@@ -88,7 +84,6 @@ def mlp02(mark, memory_depth, hidden_dim, learning_rate, activation):
 
   # Build model
   model.default_build(learning_rate)
-
 
   # Return model
   return model
