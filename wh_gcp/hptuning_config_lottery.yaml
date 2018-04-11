@@ -23,12 +23,21 @@ trainingInput:
       minValue: 0.000001
       maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
+    - parameterName: lr4
+      type: DOUBLE
+      minValue: 0.000001
+      maxValue: 0.001
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: lr5
+      type: DOUBLE
+      minValue: 0.000001
+      maxValue: 0.001
+      scaleType: UNIT_LOG_SCALE
     - parameterName: coe
       type: DISCRETE
       discreteValues:
       - 2
       - 8
-      - 16
     - parameterName: activation
       type: CATEGORICAL
       categoricalValues:
