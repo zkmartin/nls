@@ -26,6 +26,7 @@ trainingInput:
     - parameterName: coe
       type: DISCRETE
       discreteValues:
+      - 2
       - 8
       - 16
     - parameterName: activation
@@ -33,3 +34,7 @@ trainingInput:
       categoricalValues:
       - relu
       - tanh
+    - parameterName: branches
+      type: INTEGER
+      minValue: 2
+      maxValue: 5
