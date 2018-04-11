@@ -69,4 +69,4 @@ def mlp01(mark, memory_depth, hidden_dim, learning_rate, activation):
 
 if __name__ == '__main__':
   lr_list = [0.001, 0.001, 0.001]
-  model = mlp01('test', 10, 10, 0.001, 'relu', lr_list)
+  model = mlp01('test', 10, 10, 0.001, 'relu')

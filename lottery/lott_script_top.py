@@ -25,12 +25,12 @@ def main(_):
   HIDDEN_DIM = MEMORY_DEPTH * coe
 
   EPOCH = 500
-  LR = 0.000058
+  LR = 0.00000088
   LR_LIST = [0.000088]*3
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 0
-  FIX_PRE_WEIGHT = True
+  BRANCH_INDEX = 2
+  FIX_PRE_WEIGHT = False
   ACTIVATION = 'relu'
 
   # FLAGS.train = False
@@ -56,7 +56,9 @@ def main(_):
   if FLAGS.train:
     model.identify(train_set, val_set, batch_size=BATCH_SIZE,
                    print_cycle=PRINT_CYCLE, epoch=EPOCH,
-                   branch_index=BRANCH_INDEX, lr_list=LR_LIST, freeze=FIX_PRE_WEIGHT)
+                   branch_index=BRANCH_INDEX, lr_list=LR_LIST,
+                   freeze=FIX_PRE_WEIGHT,
+                   layer_train=True)
 
   else:
     BRANCH_INDEX = 1

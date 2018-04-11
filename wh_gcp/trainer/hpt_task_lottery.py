@@ -50,7 +50,7 @@ def main(_):
   FLAGS.smart_train = True
 
   # Get model
-  model = model_lib.mlp02(MARK, MEMORY_DEPTH, BRANCHES, LAYER_DIM, LR, ACTIVATION)
+  model = model_lib.mlp02(MARK, MEMORY_DEPTH, BRANCHES, LAYER_DIM, LR, ACTIVATION, identity_init=False)
 
   # Load data set
   train_set, val_set, test_set = load_wiener_hammerstein(

@@ -63,9 +63,12 @@ def mlp_01(mark, memory_depth, layer_dim, learning_rate,
   # Return model
   return model
 
-def mlp02(mark, memory_depth, layer_num, hidden_dim, learning_rate, activation):
+def mlp02(mark, memory_depth, layer_num, hidden_dim, learning_rate, activation, identity_init=True):
   # Initiate a neural net
-  model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=True)
+  if identity_init:
+    model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=True)
+  else:
+    model = NeuralNet(memory_depth, mark=mark, bamboo=True)
   nn = model.nn
   assert isinstance(nn, Bamboo)
 
