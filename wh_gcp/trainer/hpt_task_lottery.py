@@ -32,7 +32,7 @@ def main(_):
     FLAGS.save_best = False
 
   FLAGS.smart_train = True
-  FLAGS.save_best = True
+  FLAGS.save_best = False
 
   WH_PATH = FLAGS.data_dir
 
