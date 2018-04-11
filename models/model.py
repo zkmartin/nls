@@ -13,7 +13,7 @@ from signals import Signal
 
 
 class Model(object):
-  """Base class of all models"""
+  """Baseclass of all models"""
   extension = '.mdl'
 
   def __init__(self):
