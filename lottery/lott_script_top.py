@@ -19,17 +19,20 @@ def main(_):
   console.start('Lottery')
 
   # Configurations
-  MARK = 'mlp00'
+  MARK = 'mlp01'
   MEMORY_DEPTH = 80
   coe = 8
   HIDDEN_DIM = MEMORY_DEPTH * coe
+  BRANCH_NUM = 10
+  T_BRANCH_INDEX_S = 0
+  T_BRANCH_INDEX_E = 2
 
   EPOCH = 500
   LR = 0.00000088
-  LR_LIST = [0.000088]*3
+  LR_LIST = [0.000088]*(BRANCH_NUM + 1)
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 2
+  BRANCH_INDEX = 0
   FIX_PRE_WEIGHT = False
   ACTIVATION = 'relu'
 
@@ -50,18 +53,19 @@ def main(_):
   assert isinstance(test_set, DataSet)
 
   # Get model
-  model = lott_lib.mlp01(MARK, MEMORY_DEPTH, HIDDEN_DIM, LR, ACTIVATION)
+  model = lott_lib.mlp01(MARK, MEMORY_DEPTH, BRANCH_NUM, HIDDEN_DIM, LR, ACTIVATION)
 
   # Train or evaluate
   if FLAGS.train:
     model.identify(train_set, val_set, batch_size=BATCH_SIZE,
                    print_cycle=PRINT_CYCLE, epoch=EPOCH,
                    branch_index=BRANCH_INDEX, lr_list=LR_LIST,
-                   freeze=FIX_PRE_WEIGHT,
-                   layer_train=True)
+                   freeze=FIX_PRE_WEIGHT, t_branch_s_index=T_BRANCH_INDEX_S,
+                   t_branch_e_index=T_BRANCH_INDEX_E,
+                   layer_train=False)
 
   else:
-    BRANCH_INDEX = 1
+    BRANCH_INDEX = 3
     model.evaluate(train_set, start_at=MEMORY_DEPTH, branch_index=BRANCH_INDEX)
     model.evaluate(val_set, start_at=MEMORY_DEPTH, branch_index=BRANCH_INDEX)
     model.evaluate(test_set, start_at=MEMORY_DEPTH, branch_index=BRANCH_INDEX)

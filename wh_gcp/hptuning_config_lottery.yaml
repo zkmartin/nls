@@ -33,17 +33,7 @@ trainingInput:
       minValue: 0.000001
       maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
-    - parameterName: coe
-      type: DISCRETE
-      discreteValues:
-      - 2
-      - 8
-    - parameterName: activation
-      type: CATEGORICAL
-      categoricalValues:
-      - relu
-      - tanh
     - parameterName: branches
       type: INTEGER
-      minValue: 2
+      minValue: 3
       maxValue: 5

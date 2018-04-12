@@ -8,7 +8,7 @@ import trainer.model_lib as model_lib
 # Add command-line arguments for hyper-parameters
 flags = tf.app.flags
 
-flags.DEFINE_integer("coe", 2, "layer_dim coe")
+flags.DEFINE_integer("coe", 8, "layer_dim coe")
 flags.DEFINE_integer("branches", 2, "the branches of the model")
 flags.DEFINE_string("activation", 'relu', "activation function")
 flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
