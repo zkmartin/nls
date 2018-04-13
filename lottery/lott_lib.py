@@ -2,6 +2,7 @@ from models import NeuralNet
 import tensorflow as tf
 
 from tframe.models.sl.bamboo import Bamboo
+from tframe.models.sl.bamboo_broad import Bamboo_Broad
 
 from tframe.layers import Activation
 from tframe.layers import Input
@@ -43,6 +44,7 @@ def mlp01(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation,
     model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=True)
   else:
     model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=False)
+
   nn = model.nn
   assert isinstance(nn, Bamboo)
 
@@ -65,6 +67,34 @@ def mlp01(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation,
 
   # Return model
   return model
+
+def mlp02(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation, identiry_init=False):
+  # Initiate a neural net
+  if identiry_init:
+    model = NeuralNet(memory_depth, mark=mark, bamboo_braod=True, identity_initial=True)
+  else:
+    model = NeuralNet(memory_depth, mark=mark, bamboo_broad=True, identity_initial=False)
+
+  nn = model.nn
+  assert isinstance(nn, Bamboo_Broad)
+
+  # Add layers
+  nn.add(Input([memory_depth]))
+
+  for _ in range(branch_num):
+    branch = nn.add_branch()
+    branch.add(Linear(output_dim=hidden_dim))
+    branch.add(Activation(activation))
+    branch.add(Linear(output_dim=1))
+
+  # Build model
+  model.default_build(learning_rate)
+
+
+  # Return model
+  return model
+
+
 
 if __name__ == '__main__':
   lr_list = [0.001, 0.001, 0.001]

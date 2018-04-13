@@ -10,6 +10,8 @@ from tframe import Predictor
 from tframe import TFData
 from tframe.models.sl.vn import VolterraNet
 from tframe.models.sl.bamboo import Bamboo
+from tframe.models.sl.bamboo_broad import Bamboo_Broad
+from tframe import pedia
 
 from models import Model
 from signals import Signal
@@ -34,11 +36,14 @@ class NeuralNet(Model):
     self.degree = degree
     # TODO: compromise
     bamboo = kwargs.get('bamboo', False)
+    bamboo_broad = kwargs.get('bamboo_broad', False)
     identity_inital = kwargs.get('identity_initial', False)
     if degree is not None:
       self.nn = VolterraNet(degree, memory_depth, mark, **kwargs)
     elif bamboo:
-        self.nn = Bamboo(mark=mark, identity=identity_inital)
+      self.nn = Bamboo(mark=mark, identity=identity_inital)
+    elif bamboo_broad:
+      self.nn = Bamboo_Broad(mark=mark, inter_type=pedia.fork, identity=identity_inital)
     else: self.nn = Predictor(mark=mark)
 
   # region : Public Methods
