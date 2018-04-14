@@ -19,7 +19,7 @@ def main(_):
   console.start('Lottery')
 
   # Configurations
-  MARK = 'mlp00'
+  MARK = 'mlp00_broad'
   BRANCH_NUM = 3
   MEMORY_DEPTH = 80
   coe = 8
@@ -29,7 +29,7 @@ def main(_):
   LR = 0.000088
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 1
+  BRANCH_INDEX = 0
   FIX_PRE_WEIGHT = True
   ACTIVATION = 'relu'
 
