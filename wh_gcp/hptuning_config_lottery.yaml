@@ -10,30 +10,26 @@ trainingInput:
     params:
     - parameterName: lr1
       type: DOUBLE
-      minValue: 0.000001
-      maxValue: 0.001
+      minValue: 0.0000001
+      maxValue: 0.0001
       scaleType: UNIT_LOG_SCALE
     - parameterName: lr2
       type: DOUBLE
-      minValue: 0.000001
-      maxValue: 0.001
+      minValue: 0.0000001
+      maxValue: 0.0001
       scaleType: UNIT_LOG_SCALE
     - parameterName: lr3
       type: DOUBLE
-      minValue: 0.000001
-      maxValue: 0.001
+      minValue: 0.0000001
+      maxValue: 0.0001
       scaleType: UNIT_LOG_SCALE
     - parameterName: lr4
       type: DOUBLE
-      minValue: 0.000001
-      maxValue: 0.001
+      minValue: 0.0000001
+      maxValue: 0.0001
       scaleType: UNIT_LOG_SCALE
-    - parameterName: lr5
-      type: DOUBLE
-      minValue: 0.000001
-      maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
     - parameterName: branches
       type: INTEGER
-      minValue: 3
-      maxValue: 5
+      minValue: 2
+      maxValue: 3

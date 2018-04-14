@@ -15,7 +15,6 @@ flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
 flags.DEFINE_float('lr2', 0.0001, 'the lr for the second layer')
 flags.DEFINE_float('lr3', 0.0001, 'the lr for the third layer')
 flags.DEFINE_float('lr4', 0.0001, 'the lr for the fourth layer')
-flags.DEFINE_float('lr5', 0.0001, 'the lr for the fifth layer')
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
 
@@ -39,12 +38,12 @@ def main(_):
   MARK = 'lottery01'
   MEMORY_DEPTH = 80
   PRINT_CYCLE = 50
-  EPOCH = 500
+  EPOCH = 1000
   LR = 0.000088
 
 
   LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
-  LR_LIST = [FLAGS.lr1, FLAGS.lr2, FLAGS.lr3, FLAGS.lr4, FLAGS.lr5]
+  LR_LIST = [FLAGS.lr1, FLAGS.lr2, FLAGS.lr3, FLAGS.lr4]
   ACTIVATION = FLAGS.activation
   BRANCHES = FLAGS.branches
   FLAGS.smart_train = True

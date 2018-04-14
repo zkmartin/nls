@@ -85,7 +85,7 @@ def mlp02(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation,
     branch = nn.add_branch()
     branch.add(Linear(output_dim=hidden_dim))
     branch.add(Activation(activation))
-    branch.add(Linear(output_dim=1))
+    branch.add(Linear(output_dim=1, weight_initializer=tf.zeros_initializer(), bias_initializer=tf.zeros_initializer()),)
 
   # Build model
   model.default_build(learning_rate)
