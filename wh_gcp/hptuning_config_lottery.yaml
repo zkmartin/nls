@@ -28,7 +28,6 @@ trainingInput:
       minValue: 0.0000001
       maxValue: 0.0001
       scaleType: UNIT_LOG_SCALE
-      scaleType: UNIT_LOG_SCALE
     - parameterName: branches
       type: INTEGER
       minValue: 2
