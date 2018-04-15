@@ -15,7 +15,7 @@ flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
 flags.DEFINE_float('lr2', 0.0001, 'the lr for the second layer')
 flags.DEFINE_float('lr3', 0.0001, 'the lr for the third layer')
 flags.DEFINE_float('lr4', 0.0001, 'the lr for the fourth layer')
-flags.DEFINE_float('lr4', 0.00001, 'the lr for the fourth layer')
+flags.DEFINE_float('lr5', 0.00001, 'the lr for the whole layers')
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
 

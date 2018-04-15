@@ -29,11 +29,11 @@ def main(_):
   LR = 0.000088
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 0
+  BRANCH_INDEX = 1
   FIX_PRE_WEIGHT = True
   ACTIVATION = 'relu'
 
-  # FLAGS.train = False
+  FLAGS.train = False
   FLAGS.overwrite = True and BRANCH_INDEX == 0
   FLAGS.smart_train = True
   FLAGS.save_best = True and BRANCH_INDEX > 0

@@ -81,7 +81,12 @@ def mlp02(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation,
   # Add layers
   nn.add(Input([memory_depth]))
 
-  for _ in range(branch_num):
+  branch = nn.add_branch()
+  branch.add(Linear(output_dim=hidden_dim))
+  branch.add(Activation(activation))
+  branch.add(Linear(output_dim=1))
+
+  for _ in range(branch_num - 1):
     branch = nn.add_branch()
     branch.add(Linear(output_dim=hidden_dim))
     branch.add(Activation(activation))
