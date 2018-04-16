@@ -13,7 +13,7 @@ trainingInput:
       minValue: 0.000001
       maxValue: 0.001
       scaleType: UNIT_LOG_SCALE
-   - parameterName: branches
+    - parameterName: branches
       type: DISCRETE
       discreteValues:
       - 16
