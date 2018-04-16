@@ -38,9 +38,9 @@ def mlp00(mark, memory_depth, hidden_dim, learning_rate, activation):
   # Return model
   return model
 
-def mlp01(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation, identiry_init=True):
+def mlp01(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation, identity_init=True):
   # Initiate a neural net
-  if identiry_init:
+  if identity_init:
     model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=True)
   else:
     model = NeuralNet(memory_depth, mark=mark, bamboo=True, identity_initial=False)
@@ -68,9 +68,9 @@ def mlp01(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation,
   # Return model
   return model
 
-def mlp02(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation, identiry_init=False):
+def mlp02(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation, identity_init=False):
   # Initiate a neural net
-  if identiry_init:
+  if identity_init:
     model = NeuralNet(memory_depth, mark=mark, bamboo_braod=True, identity_initial=True)
   else:
     model = NeuralNet(memory_depth, mark=mark, bamboo_broad=True, identity_initial=False)
@@ -88,9 +88,11 @@ def mlp02(mark, memory_depth, branch_num, hidden_dim, learning_rate, activation,
 
   for _ in range(branch_num - 1):
     branch = nn.add_branch()
-    branch.add(Linear(output_dim=hidden_dim))
+    branch.add(Linear(output_dim=hidden_dim, weight_initializer=tf.zeros_initializer(),
+                      bias_initializer=tf.zeros_initializer()))
     branch.add(Activation(activation))
-    branch.add(Linear(output_dim=1, weight_initializer=tf.zeros_initializer(), bias_initializer=tf.zeros_initializer()),)
+    branch.add(Linear(output_dim=1, weight_initializer=tf.zeros_initializer(),
+                      bias_initializer=tf.zeros_initializer()))
 
   # Build model
   model.default_build(learning_rate)

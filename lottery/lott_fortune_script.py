@@ -19,28 +19,29 @@ def main(_):
   console.start('Lottery')
 
   # Configurations
-  MARK = 'mlp00_broad'
+  MARK = 'mlp02_broad'
   BRANCH_NUM = 3
   MEMORY_DEPTH = 80
   coe = 8
   HIDDEN_DIM = MEMORY_DEPTH * coe
 
   EPOCH = 500
-  LR = 0.000088
+  LR = 0.00088
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
   BRANCH_INDEX = 1
   FIX_PRE_WEIGHT = True
   ACTIVATION = 'relu'
 
-  FLAGS.train = False
+  # FLAGS.train = False
   FLAGS.overwrite = True and BRANCH_INDEX == 0
   FLAGS.smart_train = True
   FLAGS.save_best = True and BRANCH_INDEX > 0
+  # FLAGS.save_best = False
   FLAGS.summary = True
   # FLAGS.save_model = False
   FLAGS.snapshot = False
-  FLAGS.epoch_tol = 50
+  FLAGS.epoch_tol = 100
 
   # Load data
   train_set, val_set, test_set = load_wiener_hammerstein(

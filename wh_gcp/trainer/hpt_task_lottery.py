@@ -8,14 +8,8 @@ import trainer.model_lib as model_lib
 # Add command-line arguments for hyper-parameters
 flags = tf.app.flags
 
-flags.DEFINE_integer("coe", 8, "layer_dim coe")
 flags.DEFINE_integer("branches", 2, "the branches of the model")
-flags.DEFINE_string("activation", 'relu', "activation function")
 flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
-flags.DEFINE_float('lr2', 0.0001, 'the lr for the second layer')
-flags.DEFINE_float('lr3', 0.0001, 'the lr for the third layer')
-flags.DEFINE_float('lr4', 0.0001, 'the lr for the fourth layer')
-flags.DEFINE_float('lr5', 0.00001, 'the lr for the whole layers')
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
 
@@ -36,17 +30,18 @@ def main(_):
 
   WH_PATH = FLAGS.data_dir
 
-  MARK = 'lottery01'
+  MARK = 'lottery02'
   MEMORY_DEPTH = 80
   PRINT_CYCLE = 50
   EPOCH = 1000
   LR = 0.000088
 
 
-  LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
-  LR_LIST = [FLAGS.lr1, FLAGS.lr2, FLAGS.lr3, FLAGS.lr4, FLAGS.lr5]
-  ACTIVATION = FLAGS.activation
+  LAYER_DIM = MEMORY_DEPTH
+  # ACTIVATION = FLAGS.activation
+  ACTIVATION = 'relu'
   BRANCHES = FLAGS.branches
+  LR_LIST = [FLAGS.lr1] * (BRANCHES + 1)
   FLAGS.smart_train = True
 
   # Get model

@@ -19,7 +19,7 @@ def main(_):
   console.start('Lottery')
 
   # Configurations
-  MARK = 'mlp03'
+  MARK = 'mlp_final'
   MEMORY_DEPTH = 80
   coe = 8
   HIDDEN_DIM = MEMORY_DEPTH * coe
