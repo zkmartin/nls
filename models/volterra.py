@@ -172,7 +172,8 @@ class Volterra(Model):
 
 class Kernels(object):
   """Volterra kernel in symmetric form"""
-  MAX_PARAMS_COUNT = int(3e7)  # 100~200MB Memory
+  # MAX_PARAMS_COUNT = int(3e7)  # 100~200MB Memory
+  MAX_PARAMS_COUNT = int(5e7)  # 100~200MB Memory
 
   def __init__(self, degree, depth):
     if not isinstance(depth, list) or isinstance(depth, tuple):

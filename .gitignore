@@ -7,6 +7,8 @@
 
 # Ignore records and data folders
 *records*/
+*backup*/
+*back_up*/
 data/
 
 # Ignore vim files
