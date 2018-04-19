@@ -12,7 +12,7 @@ trainingInput:
       type: DISCRETE
       discreteValues:
       - 0.000088
-      - 0.000011
+      - 0.000007
     - parameterName: coe
       type: DISCRETE
       discreteValues:
