@@ -12,7 +12,7 @@ flags = tf.app.flags
 flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
-flags.DEFINE_integer("the coe of layer_dim", 1, "the coe of the layer_dim")
+flags.DEFINE_integer("coe", 1, "the coe of the layer_dim")
 
 FLAGS = flags.FLAGS
 
