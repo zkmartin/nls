@@ -16,7 +16,7 @@ trainingInput:
     - parameterName: coe
       type: DISCRETE
       discreteValues:
-      - 8
-      - 4
-      - 2
       - 1
+      - 2
+      - 4
+      - 8
