@@ -19,29 +19,29 @@ def main(_):
   console.start('Lottery')
 
   # Configurations
-  MARK = 'mlp_final'
+  MARK = 'mlp_block_test'
   MEMORY_DEPTH = 80
-  coe = 8
+  coe = 2
   HIDDEN_DIM = MEMORY_DEPTH * coe
-  BRANCH_NUM = 10
+  BRANCH_NUM = 12
   T_BRANCH_INDEX_S = 0
-  T_BRANCH_INDEX_E = 5
+  T_BRANCH_INDEX_E = 0
 
   EPOCH = 5000
   LR = 0.000000088
   LR_LIST = [0.000088]*(BRANCH_NUM + 1)
   BATCH_SIZE = 32
   PRINT_CYCLE = 10
-  BRANCH_INDEX = 2
+  BRANCH_INDEX = 0
   # FIX_PRE_WEIGHT = True
   freeze_index = -1
-  LAYER_TRAIN = True
+  LAYER_TRAIN = False
   BRANCH_TRAIN = False
   ACTIVATION = 'relu'
 
   # FLAGS.train = False
   # FLAGS.overwrite = True and BRANCH_INDEX == 0
-  FLAGS.overwrite = False
+  FLAGS.overwrite = True
   FLAGS.smart_train = True
   FLAGS.save_best = True and BRANCH_INDEX > 0
   # FLAGS.save_best = False

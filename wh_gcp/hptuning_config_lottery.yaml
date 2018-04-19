@@ -9,13 +9,14 @@ trainingInput:
     enableTrialEarlyStopping: TRUE
     params:
     - parameterName: lr1
-      type: DOUBLE
-      minValue: 0.000001
-      maxValue: 0.001
-      scaleType: UNIT_LOG_SCALE
-    - parameterName: branches
       type: DISCRETE
       discreteValues:
-      - 16
-      - 32
-      - 64
+      - 0.000088
+      - 0.000011
+    - parameterName: coe
+      type: DISCRETE
+      discreteValues:
+      - 8
+      - 4
+      - 2
+      - 1

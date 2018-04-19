@@ -8,10 +8,11 @@ import trainer.model_lib as model_lib
 # Add command-line arguments for hyper-parameters
 flags = tf.app.flags
 
-flags.DEFINE_integer("branches", 2, "the branches of the model")
+# flags.DEFINE_integer("branches", 2, "the branches of the model")
 flags.DEFINE_float('lr1', 0.0001, 'the lr for the first layer')
 #flags.DEFINE_float("lr", 0.001, "Learning rate")
 #flags.DEFINE_integer("batch_size", -1, "The size of batch images")
+flags.DEFINE_integer("the coe of layer_dim", 1, "the coe of the layer_dim")
 
 FLAGS = flags.FLAGS
 
@@ -37,15 +38,16 @@ def main(_):
   LR = 0.000088
 
 
-  LAYER_DIM = MEMORY_DEPTH
+  LAYER_DIM = MEMORY_DEPTH * FLAGS.coe
   # ACTIVATION = FLAGS.activation
   ACTIVATION = 'relu'
-  BRANCHES = FLAGS.branches
+  # BRANCHES = FLAGS.branches
+  BRANCHES = 6
   LR_LIST = [FLAGS.lr1] * (BRANCHES + 1)
   FLAGS.smart_train = True
 
   # Get model
-  model = model_lib.mlp02(MARK, MEMORY_DEPTH, BRANCHES, LAYER_DIM, LR, ACTIVATION, identity_init=False)
+  model = model_lib.mlp02(MARK, MEMORY_DEPTH, BRANCHES, LAYER_DIM, LR, ACTIVATION, identity_init=True)
 
   # Load data set
   train_set, val_set, test_set = load_wiener_hammerstein(
